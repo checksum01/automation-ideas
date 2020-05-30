@@ -1,0 +1,8 @@
+## common configs
+automation:
+  http:
+    validation:
+      - status: 200
+        acronym: records_successfully_retrieved
+      - status: 201
+        acronym: record_created_successfully

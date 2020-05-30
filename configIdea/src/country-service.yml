@@ -1,0 +1,28 @@
+automation:
+  http:
+    server:
+      - parentService: api-gateway-1 # reference the parent url name
+        paths:
+          - path: /country
+            headers:
+              Accept: application/json
+            operations:
+              - operation: GET
+                queryParam:
+                acronym: get_all_countries
+              - operation: POST
+                acronym: create_countries
+                validation:
+                  - status: 200
+                    acronym: records_successfully_retrieved
+                  - status: 201
+                    acronym: record_created_successfully
+          - path: /country/{country_id}
+            operations:
+              - operation: GET
+                acronym: get_country_by_id
+            validation:
+              - status: 200
+                acronym: records_successfully_retrieved
+              - status: 201
+                acronym: record_created_successfully

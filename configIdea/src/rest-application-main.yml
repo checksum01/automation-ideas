@@ -1,0 +1,23 @@
+## configs for api-gateway services
+automation:
+  http:
+    rest-client:
+ #    - active: true
+      - url: http://localhost:8081/v1
+        name: api-gateway-1
+        headers:        #optional
+          Accept: application/json
+    rest-client:
+      - url: http://localhost:8081/v2
+        name: api-gateway-2
+        headers:        #optional
+          Accept: application/json
+  db:
+    gemfire:
+ #    - active: true
+      - name: db-connection-1
+        host: demohost
+        port: 9001
+        user: testuser
+        password: testpassword
+
