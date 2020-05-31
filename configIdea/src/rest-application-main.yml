@@ -7,6 +7,31 @@ automation:
         name: api-gateway-1
         headers:        #optional
           Accept: application/json
+        paths:
+          - path: /*
+            operations:
+              - operation: *
+                validation:
+                  - status: 200
+                    acronym: 'request was successfully completed'
+                  - status: 201
+                    acronym: 'record was created successfully'
+                  - status: 400
+                    acronym: 'request was invalid'
+                  - status: 401
+                    acronym: 'request did not include an authentication token or the authentication token was expired'
+                  - status: 403
+                    acronym: 'client did not have permission to access the requested resource.'    
+                  - status: 404
+                    acronym: 'requested resource was not found' 
+                  - status: 405
+                    acronym: 'HTTP method in the request was not supported by the resource.'
+                  - status: 409
+                    acronym: 'request could not be completed due to a conflict.'   
+                  - status: 500
+                    acronym: 'request was not completed due to an internal error on the server.' 
+                  - status: 503
+                    acronym: 'server was unavailable' 
     rest-client:
       - url: http://localhost:8081/v2
         name: api-gateway-2
