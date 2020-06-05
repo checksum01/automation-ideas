@@ -1,0 +1,34 @@
+automation:
+  http:
+    server:
+      - parentService: portfolioOptimiser # reference the parent url name
+        paths:
+          - path: /portfolio
+            headers:
+              Accept: application/json
+            operations:
+              - operation: GET
+                queryParam:
+                acronym: get_portfolio
+                validation:
+                  - status: 200
+                    acronym: portfolio_details_successfully_retrieved
+            operations:
+              - operation: POST
+                queryParam:
+                acronym: create_portfolio
+                validation:
+                  - status: 200
+                    acronym: portfolio_created_successfully
+          - path: /positions
+            operations:
+              - operation: POST
+                acronym: set_portfolio_positions
+                validation:
+                  - status: 201
+                    acronym: portfolio_created_successfully
+              - operation: DELETE
+                acronym: delete_portfolio_for_id
+                validation:
+                  - status: 200
+                    acronym: request_successfully_executed

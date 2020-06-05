@@ -1,0 +1,9 @@
+## configs for api-gateway services
+automation:
+  http:
+    rest-client:
+ #    - active: true
+      - url: http://localhost:8081/
+        name: portfolioOptimiser
+        headers:
+          Accept: application/json
